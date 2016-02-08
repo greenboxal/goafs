@@ -39,8 +39,6 @@ func afs_syscall(call uintptr, param1 uintptr, param2 uintptr, param3 uintptr, p
 
 	err = gioctl.Ioctl(uintptr(fd), gioctl.IoW(67, 1, unsafe.Sizeof(uintptr(0))), uintptr(unsafe.Pointer(&data)))
 
-	fmt.Printf("%d %d %s\n", call, fd, err)
-
 	syscall.Close(fd)
 
 	return err
