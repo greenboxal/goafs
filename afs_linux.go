@@ -3,7 +3,6 @@
 package goafs
 
 import (
-	"fmt"
 	"unsafe"
 	"syscall"
 

@@ -51,7 +51,7 @@ func afs_syscall(call uintptr, param1 uintptr, param2 uintptr, param3 uintptr, p
 			0,
 		}
 
-		err = gioctl.Ioctl(uintptr(fd), gioctl.IoW(67, 1, uintptr(0)), uintptr(unsafe.Pointer(&data)))
+		err = gioctl.Ioctl(uintptr(fd), gioctl.IoW(67, 1, unsafe.Sizeof(uintptr(0))), uintptr(unsafe.Pointer(&data)))
 	} else {
 		data := afsprocdata64{
 			param1,
@@ -64,7 +64,7 @@ func afs_syscall(call uintptr, param1 uintptr, param2 uintptr, param3 uintptr, p
 			0,
 		}
 
-		err = gioctl.Ioctl(uintptr(fd), gioctl.IoW(67, 2, uintptr(0)), uintptr(unsafe.Pointer(&data)))
+		err = gioctl.Ioctl(uintptr(fd), gioctl.IoW(67, 2, unsafe.Sizeof(uintptr(0))), uintptr(unsafe.Pointer(&data)))
 	}
 
 	syscall.Close(fd)
