@@ -13,12 +13,12 @@ type ViceIoctl struct {
 }
 
 // Creates a new PAG and attach it to the current process
-func setpag() error {
+func Setpag() error {
 	return afs_syscall(21, 0, 0, 0, 0)
 }
 
 // Destroy all AFS tokens
-func unlog() error {
+func Unlog() error {
 	iob := ViceIoctl{0, 0, 0, 0}
 
 	return afs_pioctl(nil, gioctl.IoW(86, 9, unsafe.Sizeof(ViceIoctl{})), &iob, false)
